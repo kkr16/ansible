@@ -198,6 +198,9 @@ def add_value(module):
 
     index, existing = consul_api.kv.get(key)
 
+    if module._diff:
+        diff = {'before':existing.get('Value') ,'after':value}
+
     changed = not existing or (existing and existing['Value'] != value)
     if changed and not module.check_mode:
         changed = consul_api.kv.put(key, value,
