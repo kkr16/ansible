@@ -213,7 +213,8 @@ def add_value(module):
     module.exit_json(changed=changed,
                      index=index,
                      key=key,
-                     data=stored)
+                     data=stored,
+                     diff=diff)
 
 
 def remove_value(module):
